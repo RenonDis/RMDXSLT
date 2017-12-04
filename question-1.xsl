@@ -7,7 +7,7 @@
 <xsl:template match='ponctualite-transilien'>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 		<head>
-			<link rel="stylesheet" type="text/css" href="style.css"/>
+			<link rel="stylesheet" type="text/css" href="style_trains.css"/>
 		</head> 
 		<body>
 			<xsl:apply-templates></xsl:apply-templates>
