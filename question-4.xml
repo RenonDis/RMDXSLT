@@ -10,6 +10,7 @@
   </head>
   <body>
 
+    <!-- Methode de calcul du min et max en dur -->
     <xsl:variable name="minmax">
       <xsl:for-each select="//mesure">
         <xsl:sort select="../@millesime"/>
@@ -23,9 +24,34 @@
         </xsl:if>
       </xsl:for-each>
     </xsl:variable>
+
+    <!-- Methode avec appel de template -->
+    <xsl:variable name="minan">
+    <xsl:call-template name="min">
+    <xsl:with-param name="list" select="//annee/@millesime"/>
+    </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="minmois">
+    <xsl:call-template name="min">
+    <xsl:with-param name="list" select="//annee[@millesime=$minan]/mesure/@mois"/>
+    </xsl:call-template>
+    </xsl:variable>
     
+    <xsl:variable name="maxan">
+    <xsl:call-template name="max">
+    <xsl:with-param name="list" select="//annee/@millesime"/>
+    </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="maxmois">
+    <xsl:call-template name="max">
+    <xsl:with-param name="list" select="//annee[@millesime=$maxan]/mesure/@mois"/>
+    </xsl:call-template>
+    </xsl:variable>
     
-    <h1>Ponctualité du transilien du <xsl:value-of select="$minmax"/> </h1>
+    <h1>Ponctualité du transilien du <xsl:value-of select="$minmois"/>-<xsl:value-of select="$minan"/>
+    au <xsl:value-of select="$maxmois"/>-<xsl:value-of select="$maxan"/> </h1>
       
   <xsl:apply-templates/>
 
@@ -58,5 +84,27 @@
      </xsl:for-each>
 </table>
 </xsl:template>
+
+    <!-- Template param pour calcul du min -->
+    <xsl:template name="min">
+    <xsl:param name="list"/>
+      <xsl:for-each select="$list">
+        <xsl:sort select="."/>
+        <xsl:if test="position() = 1">
+            <xsl:value-of select="."/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:template>
+    
+    <!-- Template param pour calcul du max -->
+    <xsl:template name="max">
+    <xsl:param name="list"/>
+      <xsl:for-each select="$list">
+        <xsl:sort select="."/>
+        <xsl:if test="position() = last()">
+            <xsl:value-of select="."/>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:template>
 
 </xsl:stylesheet>
