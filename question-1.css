@@ -1,0 +1,36 @@
+/* Rendering */
+
+* {
+	padding: 1em;
+	margin: 1em;
+}
+
+body { 
+        color: #333;
+	background: #ddd;
+} 
+
+body   { 
+        font-family:"Century gothic", verdana, arial, sans-serif; 
+    }
+
+	
+table {
+	display: table;
+	width: auto;
+	margin: auto;
+	margin-bottom: 2em;
+	padding: 0.5em;
+	box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+tr {
+	display: table-row;
+	box-shadow: 2px 2px 5px #aaaaaa;
+}
+
+th {
+	color:#050505
+	display: table-row;
+	}	
+

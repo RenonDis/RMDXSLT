@@ -7,7 +7,7 @@
 <xsl:template match='ponctualite-transilien'>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 		<head>
-			<link rel="stylesheet" type="text/css" href="style_trains.css"/>
+			<link rel="stylesheet" type="text/css" href="question-1.css"/>
 		</head> 
 		<body>
 			<xsl:apply-templates></xsl:apply-templates>
@@ -22,8 +22,10 @@
 		<tr>
 			<th>Date
 			</th>
+
 			<th>Mesure
 			</th>
+
 			<th>Satisfaction
 			</th>
 		</tr>
@@ -38,14 +40,17 @@
 	</tr>
 </xsl:template>
 
+
 <xsl:template match='ponctualite'> 
 	<td>
 		<xsl:value-of select="../../@millesime"/>-<xsl:value-of select="../@mois"/>
 	</td>
+
 	<td>
-			<xsl:apply-templates></xsl:apply-templates>
+		<xsl:value-of select="substring(.,1,4)"/>
 	</td>
 </xsl:template>
+
 
 <xsl:template match='satisfaction'>
 	<td>
