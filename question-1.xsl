@@ -3,14 +3,12 @@
 
 <xsl:output method="html" encoding="utf-8"/>
 
-<xsl:template match='ponctualite-transilien'>
-	'&lt;?xml-stylesheet href="style_trains.css" type="text/css"?&gt;'
-	<xsl:apply-templates></xsl:apply-templates>
-</xsl:template>
-
 
 <xsl:template match='ponctualite-transilien'>
-	<html>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css"/>
+		</head> 
 		<body>
 			<xsl:apply-templates></xsl:apply-templates>
 		</body>
@@ -22,6 +20,8 @@
 <xsl:template match='ligne'>
 	<table>
 		<tr>
+			<th>Date
+			</th>
 			<th>Mesure
 			</th>
 			<th>Satisfaction
@@ -31,14 +31,23 @@
 	</table>
 </xsl:template>
 
-
+ <!--Choix ici : on ne met pas match = 'mesure|ponctualite' pour n'ajouter qu'une seule fois la date-->
 <xsl:template match='mesure'>
 	<tr>
-			<xsl:apply-templates></xsl:apply-templates>
+		<xsl:apply-templates></xsl:apply-templates>
 	</tr>
 </xsl:template>
 
-<xsl:template match='ponctualite|satisfaction'>
+<xsl:template match='ponctualite'> 
+	<td>
+		<xsl:value-of select="../../@millesime"/>-<xsl:value-of select="../@mois"/>
+	</td>
+	<td>
+			<xsl:apply-templates></xsl:apply-templates>
+	</td>
+</xsl:template>
+
+<xsl:template match='satisfaction'>
 	<td>
 			<xsl:apply-templates></xsl:apply-templates>
 	</td>
