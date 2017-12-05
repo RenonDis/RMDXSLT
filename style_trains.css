@@ -19,7 +19,7 @@ trains, body   {
     }
 	
 
-encart, service  { 
+encart, .service  { 
 	display:block;
 	/*justify-content: flex-end;*/
 	border: 1px solid black;
@@ -28,7 +28,7 @@ encart, service  {
         line-height:1.5em; 
     }
 
-service {
+.service {
 	display: flex;
 	flex-flow: row wrap;
     }
@@ -43,45 +43,42 @@ legende {
         display:block;
     }
 	
-ligne {
-	display: table;
+table {
 	width: 13em;
 	margin: auto;
 	margin-bottom: 2em;
 	padding: 0.5em;
-	box-shadow: 2px 2px 5px #aaaaaa;
+	/*box-shadow: 2px 2px 5px #aaaaaa;*/
 }
 
-nom_ligne {
-	display: table-row;
-        border: 3px solid green;
-	white-space: nowrap;
-	text-align: center;
-}
-
-donnee {
-	display: table-row;
+tr {
 	box-shadow: 2px 2px 5px #aaaaaa;
 	
 }
 
-donnee:nth-child(even){
+tr:nth-child(even){
         background-color: #eee ;
 }
 
-donnee:hover {
+.donnee:hover {
         background-color: #afa;
         transition: 0.2s;
 }
 	
 
-Date, Taux, Nombre {
-	display: table-cell;
-	border: 1px solid black;
+td,th {
+	box-shadow: 0px 0px 1px #aaaaaa;
 	padding: 0.5em;
 }
 
+tr:first-child td {
+        font-size: 1.3em;
+}
 
+tr:nth-child(2) td {
+        height: 3px;
+        padding:0px;
+}
     /* ---------------------------------------------------------------------------------------------------------- 
      Media queries (using a mobile-first approach) ------------------------------------------------------------
     ---------------------------------------------------------------------------------------------------------- */
