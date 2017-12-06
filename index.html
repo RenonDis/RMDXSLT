@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="style_report.css" type="text/css"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+
+<title>Développement de feuilles de style XSLT</title>
+<link rel="stylesheet" type="text/css" href='style_report.css' />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+
+<h2>Introduction</h2>
+<p>Un précédent BE nous a permis de construire une application XML basique pour mettre en forme des données des retards des transiliens. Dans ce BE, nous allons partir d'un docuemnt XML valide, pour leur appliquer des transformations XSLT qui permettront de les afficher à l'aide d'un navigateur. 
+</p>
+
+<h2>Partie A : Travail réalisé</h2>
+
+<h3>Arrondis (question 1)</h3>
+<p>Le document XML à afficher contient des taux de ponctualité arrondis à 10 décimales. Or, on souhaite qu'ils soient tous à une décimale près. Pour corriger les valeurs des taux qui seraient mal arrondis, on se sert du fait qu'ils sont sous la forme de chaînes de caractères, et on ne sélectionne que les premières valeurs.
+
+<code>&lt;xsl:template match='ponctualite'&gt; 
+...
+	&lt;td&gt;
+		&lt;xsl:value-of select="substring(.,1,4)"/&gt;
+	&lt;/td&gt;
+&lt;/xsl:template&gt;
+</code>
+
+</p>
+
+
+
+<h2>Partie B : Problèmes rencontrés</h2>
+<h3>Afficher les mois par leur noms (question 3)</h3>
+<p> Dans le document original, les mois sont sous la forme de numéros. Pour les afficher sous la forme de journée, nous avons d'abord pensé à insérer un élément dans le fichier XML, élément qui contiendrait les noms des mois et leurs numéros en attributs. 
+<code>
+&lt;mois_liste&gt;
+	&lt;mois_N numero="01" nom="Janvier" /&gt;
+	&lt;mois_N numero="02" nom="Février" /&gt;
+	...
+&lt;/mois_liste&gt;
+</code>
+</p>
+
+<p> Il suffirait ensuite de retrouver le bon numéro pour y associer le bon nom grâce à une expression XPath.
+Mais cette méthode est complexe, et il est inhabituel d'ajouter des données dans le fichier xml. Au final, la solution choisie est un simple template comportant un &lt;xsl:choose&gt;, qui renvoie le nom correspondant au numéro du mois. 
+</p>
+
+
+<h2>Conclusion</h2>
+<p>Ce BE nous aura permis d'utiliser les transformations XSLT pour modifier le document XML, et pour l'afficher bien mieux que ne l'auraient fait de simples feuilles css.
+</p>
+
+<h2>Annexes</h2>
+<p>Les documents suivants ont été réalisés :</p>
+<ul>
+	<li><a href="ponctualite-mensuelle-transilien.xml">Le fichier original</a></li>
+	<li><a href="question-1.xml">question-1.xml</a> : Le document comportant le lien avec la feuille de style</li>
+	<li><a href="question-1.xsl">question-1.xsl</a> : La transformation XSLT correspondante</li>
+	<li><a href="question-1.html">question-1.html</a> : Le document obtenu après application de la transformation</li>
+	<li><a href="question-3.xml">question-3.xml</a> : La page comportant les noms des mois au lieu de leurs numéros</li>
+	<li><a href="question-4.xml">question-4.xml</a></li>
+	<li><a href="question-5.xml">question-5.xml</a></li>
+	<li><a href="question-6.xml">question-6.xml</a></li>
+	<li><a href="style_trains.css">Feuille de style du document xml</a></li>
+	<li><a href="style_report.css">Feuille de style du rapport</a></li>
+	
+</ul>
+
+<p>Le programme suivant a été réalisé :</p>
+<ul>
+	<li><a href="transform_XSL.py">transform_XSL.py</a> Applique la feuille de style question-1.xsl à ponctualite-mensuelle-transilien.xml</li>
+</ul>
+</body>
+</html>
+

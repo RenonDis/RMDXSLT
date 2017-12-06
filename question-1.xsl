@@ -37,7 +37,7 @@
 	</table>
 </xsl:template>
 
- <!--Choix ici : on ne met pas match = 'mesure|ponctualite' pour n'ajouter qu'une seule fois la date-->
+
 <xsl:template match='mesure'>
 	<tr xmlns="http://www.w3.org/1999/xhtml" >
 		<xsl:apply-templates></xsl:apply-templates>

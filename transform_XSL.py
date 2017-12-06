@@ -1,15 +1,13 @@
 from lxml import etree
 
-
-i = '1'
 XMLfile = etree.ElementTree().parse('ponctualite-mensuelle-transilien.xml')
 
 
-XSLfile = etree.ElementTree().parse('question-'+i+'.xsl')
+XSLfile = etree.ElementTree().parse('question-1.xsl')
 transform = etree.XSLT(XSLfile)
 
 newFile = transform(XMLfile)
 
 
-with open('question-'+i+'.xml','wb') as f:
+with open('question-1.html','wb') as f:
     f.write(etree.tostring(newFile, pretty_print=True))
