@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet href="joli3.xsl" type="text/xsl"?>
-
 <ponctualite-transilien>
   <service nom="RER">
-    <ligne sigle="A" id="TRA_1" nom="RER A">
+    <ligne sigle="A" nom="RER A" couleur="rouge" r="209" g="48" b="47" hex="#D1302F" id="TRA_1">
       <annee millesime="2013">
         <mesure mois="01">
           <ponctualite>83.6</ponctualite>
@@ -139,7 +137,7 @@
         </mesure>
       </annee>
     </ligne>
-    <ligne sigle="B" id="TRA_2" nom="RER B">
+    <ligne sigle="B" nom="RER B" couleur="bleu" r="66" g="125" b="189" hex="#427DBD" id="TRA_2">
       <annee millesime="2013">
         <mesure mois="02">
           <ponctualite>80.3</ponctualite>
@@ -204,7 +202,7 @@
           <satisfaction>7.7</satisfaction>
         </mesure>
         <mesure mois="06">
-          <ponctualite></ponctualite>
+          <ponctualite/>
           <satisfaction>0.0</satisfaction>
         </mesure>
         <mesure mois="09">
@@ -275,7 +273,7 @@
         </mesure>
       </annee>
     </ligne>
-    <ligne sigle="D" id="TRA_4" nom="RER D">
+    <ligne sigle="D" nom="RER D" couleur="vert" r="94" g="150" b="32" hex="#5E9620" id="TRA_4">
       <annee millesime="2013">
         <mesure mois="03">
           <ponctualite>80.0</ponctualite>
@@ -411,7 +409,7 @@
         </mesure>
       </annee>
     </ligne>
-    <ligne sigle="E" id="TRA_5" nom="RER E">
+    <ligne sigle="E" nom="RER E" couleur="rose" r="189" g="118" b="161" hex="#BD76A1" id="TRA_5">
       <annee millesime="2013">
         <mesure mois="05">
           <ponctualite>95.5</ponctualite>
@@ -547,7 +545,7 @@
         </mesure>
       </annee>
     </ligne>
-    <ligne sigle="C" id="TRA_3" nom="RER C">
+    <ligne sigle="C" nom="RER C" couleur="jaune" r="252" g="216" b="70" hex="#FCD946" id="TRA_3">
       <annee millesime="2014">
         <mesure mois="05">
           <ponctualite>91.7</ponctualite>

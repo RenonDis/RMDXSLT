@@ -25,6 +25,7 @@
 </xsl:template>
 
 <xsl:template match="ligne">
+<xsl:variable name="hexcolor" select="@hex"/>
 <table>
     <tr>
         <td colspan="3">
@@ -32,8 +33,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="3" style="background-color:red">
-        </td>
+        <td colspan="3" style="background-color:{$hexcolor}"/>
     </tr>
     <tr>
         <th>Date</th>

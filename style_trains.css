@@ -22,7 +22,7 @@ trains, body   {
 encart, .service  { 
 	display:block;
 	/*justify-content: flex-end;*/
-	border: 1px solid black;
+	/*border: 1px solid black;*/
         font-size:1em; 
         font-weight:400; 
         line-height:1.5em; 
