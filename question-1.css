@@ -5,32 +5,139 @@
 	margin: 1em;
 }
 
-body { 
+trains,
+body,
+input,
+textarea { 
         color: #333;
 	background: #ddd;
-} 
+    -webkit-font-smoothing:antialiased; } 
 
-body   { 
+/* Families */
+trains, body   { 
         font-family:"Century gothic", verdana, arial, sans-serif; 
     }
+	
 
+encart, .service  { 
+	display:block;
+	/*justify-content: flex-end;*/
+	/*border: 1px solid black;*/
+        font-size:1em; 
+        font-weight:400; 
+        line-height:1.5em; 
+    }
+
+.service {
+	display: flex;
+	flex-flow: row wrap;
+    }
+
+legende_titre, nom_service {
+	display: block;
+	width: 100%;
+	font-size:1.5em;
+}
+
+legende {
+        display:block;
+    }
 	
 table {
-	display: table;
-	width: auto;
+	width: 13em;
 	margin: auto;
 	margin-bottom: 2em;
 	padding: 0.5em;
-	box-shadow: 2px 2px 5px #aaaaaa;
+	/*box-shadow: 2px 2px 5px #aaaaaa;*/
 }
 
 tr {
-	display: table-row;
 	box-shadow: 2px 2px 5px #aaaaaa;
+	
 }
 
-th {
-	color:#050505
-	display: table-row;
-	}	
+tr:nth-child(even){
+        background-color: #eee ;
+}
+
+.donnee:hover {
+        background-color: #afa;
+        transition: 0.2s;
+}
+	
+
+td,th {
+	box-shadow: 0px 0px 1px #aaaaaa;
+	padding: 0.5em;
+}
+
+tr:first-child td {
+        font-size: 1.3em;
+}
+
+tr:nth-child(2) td {
+        height: 3px;
+        padding:0px;
+}
+    /* ---------------------------------------------------------------------------------------------------------- 
+     Media queries (using a mobile-first approach) ------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+/* 1 and up */  
+@media screen and (min-width:1px) {
+
+    trains                        { font-size:85%; }
+
+}
+
+/* 700 and up */    
+@media screen and (min-width:700px) {
+
+    trains                        { font-size:80%; }
+    
+
+}
+
+/* 800 and up */    
+@media screen and (min-width:800px) {
+
+    trains                        { font-size:90%; }
+    .menu {display:none;}
+}
+
+/* 900 and up */    
+@media screen and (min-width:900px) {
+
+    trains                        { font-size:100%; }
+    .menu {display:block;}
+}
+
+/* 1500 and up */   
+@media screen and (min-width:1500px) {
+
+    trains                        { font-size:100%; }
+
+}
+
+/* 1800 and up */   
+@media screen and (min-width:1800px) {
+
+    trains                        { font-size:105%; }
+}
+
+/* 2100 and up */   
+@media screen and (min-width:2100px) {
+
+    trains                        { font-size:110%; }
+
+}
+
+
+/* 2500 and up */   
+@media screen and (min-width:2500px) {
+
+    trains                        { font-size:120%; }
+
+}
+
 
