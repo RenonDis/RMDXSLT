@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="question-3.xsl" type="text/xsl"?>
 
-
 <ponctualite-transilien>
   <service nom="RER">
     <ligne sigle="A" id="TRA_1" nom="RER A">

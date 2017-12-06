@@ -11,6 +11,7 @@
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" >
 		<head>			
 			<title>Retard des transiliens</title>
+			<link rel="stylesheet" type="text/css" href="question-1.css"/>
 		</head>
 		<body>
 			<xsl:apply-templates></xsl:apply-templates>
@@ -35,7 +36,6 @@
 		<xsl:apply-templates></xsl:apply-templates>
 	</table>
 </xsl:template>
-
 
 
 <xsl:template match='mesure'>
@@ -63,6 +63,10 @@
 		</xsl:choose>
 
 		<xsl:value-of select="../../@millesime"/>
+	</td>
+
+	<td xmlns="http://www.w3.org/1999/xhtml" >
+		<xsl:value-of select="substring(.,1,4)"/>
 	</td>
 
 	<td xmlns="http://www.w3.org/1999/xhtml" >
