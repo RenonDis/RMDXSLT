@@ -125,6 +125,22 @@
 Mais cette méthode est complexe, et il est inhabituel d'ajouter des données dans le fichier xml. Au final, la solution choisie est un simple template comportant un &lt;xsl:choose&gt;, qui renvoie le nom correspondant au numéro du mois. 
 </p>
 
+<h3>Afficher les mois par leur noms (question 3)</h3>
+<p> Pour construire l'axe Y du graphique SVG, on ne dispose pas de boucle for dans XML 1.0 (présent dans XML 2.0). On utilise donc un contournement en bouclant sur les noeuds du document, avec une contrainte sur leur nombre :
+<code>
+<xsl:for-each select="(//node())[5 >= position()]">
+    <xsl:variable name="ypos" select="$height+$init-y - position()*$height div 5"/>
+    <text x="{$init-x - 5}" y="{$ypos + 3}"
+        font-size="10px" text-anchor="end">
+        <xsl:value-of select="substring((position()*2*$maxsatisf) div 10,1,4)"/>
+    </text>
+    <rect x="{$init-x}" y="{$ypos}" width="{$width}" height="1" stroke="#888" fill="none"/>
+</xsl:for-each>
+</code>
+</p>
+
+<p>On peut donc construire notre axe Y, avec comme itérateur la valeur <em>position ()</em>.
+</p>
 
 <h2>Conclusion</h2>
 <p>Ce BE nous aura permis d'utiliser les transformations XSLT pour modifier le document XML, et pour l'afficher bien mieux que ne l'auraient fait de simples feuilles css.
