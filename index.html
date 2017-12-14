@@ -34,6 +34,78 @@
 
 </p>
 
+<h3>Dates maximale et minimales (question 4)</h3>
+<p>Il existe deux méthodes pour trouver les dates extrémales :</p>
+<p>La première consiste à trier les dates (par année, puis par mois), puis à sélectionner la première et dernière valeur.
+<code>
+    &lt;xsl:variable name="minmax"&gt;
+      &lt;xsl:for-each select="//mesure"&gt;
+        &lt;xsl:sort select="../@millesime"/&gt;
+        &lt;xsl:sort select="@mois"/&gt;
+        &lt;xsl:if test="position() = 1"&gt;
+            &lt;xsl:value-of select="@mois"/&gt;-&lt;xsl:value-of select="../@millesime"/&gt;
+        &lt;/xsl:if&gt;
+        &lt;xsl:if test="position() = last()"&gt;
+        au
+            &lt;xsl:value-of select="@mois"/&gt;-&lt;xsl:value-of select="../@millesime"/&gt;
+        &lt;/xsl:if&gt;
+      &lt;/xsl:for-each&gt;
+    &lt;/xsl:variable&gt;
+</code></p>
+
+
+<p>La deuxième option, que l'on a choisie, fait appel aux templates prédéfinies min et max :
+<code>
+    &lt;xsl:variable name="minan"&gt;
+	    &lt;xsl:call-template name="min"&gt;
+		    &lt;xsl:with-param name="list" select="//annee/@millesime"/&gt;
+	    &lt;/xsl:call-template&gt;
+    &lt;/xsl:variable&gt;
+
+
+    &lt;xsl:variable name="minmois"&gt;
+...
+</code>
+</p>
+
+
+
+<h3>Ajout des couleurs (question 5)</h3>
+<p>Encore une fois, deux implémentations sont possibles :</p>
+<p>Soit on insère les atrtributs couleurs dans chaque balise ligne (c'est l'option qui sera privilégiée par la suite) :
+
+<code>&lt;xsl:variable name="couleurs" select="document('code-couleur-transilien.xml')"/&gt;
+&lt;xsl:variable name="colignes" select="$couleurs/code-couleur-transilien"/&gt;
+
+&lt;xsl:template match="ligne"&gt;
+  &lt;xsl:copy&gt;
+    &lt;xsl:copy-of select="$colignes/ligne[@nom=current()/@nom]/@*" /&gt;
+    &lt;xsl:apply-templates select="@* | node()"/&gt;
+  &lt;/xsl:copy&gt;
+&lt;/xsl:template&gt;
+
+</code></p>
+
+
+<p>Soit on ajoute le contenu du document code-couleur-transilien.xml au début du document final XML :
+<code>&lt;xsl:variable name="couleurs" select="document('code-couleur-transilien.xml')"/&gt;
+&lt;xsl:variable name="colignes" select="$couleurs/code-couleur-transilien"/&gt;
+
+
+&lt;xsl:template match="ponctualite-transilien"&gt;
+  &lt;xsl:copy&gt;
+    &lt;xsl:copy-of select="$colignes"/&gt;
+    &lt;xsl:apply-templates select="@* | node()"/&gt;
+  &lt;/xsl:copy&gt;
+&lt;/xsl:template&gt;
+</code>
+</p>
+
+
+
+
+<h3>Animations avec SVG (question 7)</h3>
+<p>Pour rendre le document plus vivant, des animations ont été introduites à l'aide de la bibliothèque Javascript Vivus. Au lancement de la page, il est possible de voir les axes et les graphiques se dessiner.</p>
 
 
 <h2>Partie B : Problèmes rencontrés</h2>
@@ -64,10 +136,14 @@ Mais cette méthode est complexe, et il est inhabituel d'ajouter des données da
 	<li><a href="question-1.xml">question-1.xml</a> : Le document comportant le lien avec la feuille de style</li>
 	<li><a href="question-1.xsl">question-1.xsl</a> : La transformation XSLT correspondante</li>
 	<li><a href="question-1.html">question-1.html</a> : Le document obtenu après application de la transformation</li>
-	<li><a href="question-3.xml">question-3.xml</a> : La page comportant les noms des mois au lieu de leurs numéros</li>
-	<li><a href="question-4.xml">question-4.xml</a></li>
-	<li><a href="question-5.xml">question-5.xml</a></li>
-	<li><a href="question-6.xml">question-6.xml</a></li>
+	<li><a href="question-3.xml">question-3.xml</a> : La page comportant les noms des mois au lieu de leurs numéros et <a href="question-3.xsl">le fichier xslt associé</a></li>	
+	<li><a href="question-4.xml">question-4.xml</a> : La page comportant les dates minimales et maximales, avec <a href="question-4.xsl">le fichier xslt associé</a> (ce fichier comportant les deux options mentionnées ci-dessus)</li>
+	<li><a href="question-5.xml">question-5.xml</a> : La page XML avec les attributs de couleur pour chaque lique, et <a href="question-5.xsl">le fichier xslt associé</a>, ainsi que <a href="question-5b.xsl">le fichier non utilisé se basant sur la deuxième option</a></li>
+	<li><a href="question-6.xml">question-6.xml</a> : La page dont les titres intègrent le code couleur dans l'affichage <a href="question-6.xsl">le fichier xslt associé</a></li>
+	<li><a href="question-7.xml">question-7.xml</a> : La page avec les graphiques SVG <a href="question-7.xsl">le fichier xslt associé</a></li>
+	<li><a href="js/anim.js">anim.js</a> et <a href="js/vivus.min.js">vivus.min.js</a>, les deux fichiers Javascript pour les animations des graphiques SVG</li>
+
+
 	<li><a href="style_trains.css">Feuille de style du document xml</a></li>
 	<li><a href="style_report.css">Feuille de style du rapport</a></li>
 	
