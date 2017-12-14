@@ -42,6 +42,10 @@ legende_titre, nom_service {
 legende {
         display:block;
     }
+
+.graph {
+        margin:auto;
+}
 	
 table {
 	width: 13em;
