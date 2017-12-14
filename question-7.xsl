@@ -101,6 +101,10 @@
 
     <rect x="{$init-x}" y="{$ypos}" width="{$width}" height="1" stroke="#888" fill="none"/>
     </xsl:for-each>
+    <text x="{$init-x - 5}" y="{$baseline}"
+        font-size="10px" text-anchor="end">
+        0
+    </text>
 
     <!-- Get some default for line color -->
     <xsl:variable name="linecol">
